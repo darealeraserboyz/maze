@@ -26,6 +26,13 @@ function Q1 () {
         ask()
     }
 }
+function Q5 () {
+    if (info.score() <= 0) {
+        game.showLongText("Should buy deals that are too good?", DialogLayout.Full)
+        story.showPlayerChoices("Yes", "No")
+        ask3()
+    }
+}
 function Q4 () {
     if (info.score() <= 0) {
         game.showLongText("A new movie came out and you want to watch it, you found a website where you can view it for free dou you want to watch it?", DialogLayout.Full)
@@ -90,13 +97,15 @@ game.onUpdate(function () {
     }
 })
 forever(function () {
-    if (Math.randomRange(0, 3) == 0) {
+    if (Math.randomRange(0, 4) == 0) {
         Q1()
-    } else if (Math.randomRange(0, 3) == 1) {
+    } else if (Math.randomRange(0, 4) == 1) {
         Q2()
-    } else if (Math.randomRange(0, 3) == 2) {
+    } else if (Math.randomRange(0, 4) == 2) {
         Q3()
-    } else {
+    } else if (Math.randomRange(0, 4) == 3) {
         Q4()
+    } else {
+        Q5()
     }
 })
