@@ -26,6 +26,13 @@ function Q1 () {
         ask()
     }
 }
+function Q4 () {
+    if (info.score() <= 0) {
+        game.showLongText("A new movie came out and you want to watch it, you found a website where you can view it for free dou you want to watch it?", DialogLayout.Full)
+        story.showPlayerChoices("Yes", "No")
+        ask3()
+    }
+}
 scene.onOverlapTile(SpriteKind.Player, sprites.builtin.field1, function (sprite, location) {
     game.gameOver(true)
     game.setGameOverEffect(true, effects.confetti)
@@ -83,11 +90,13 @@ game.onUpdate(function () {
     }
 })
 forever(function () {
-    if (Math.randomRange(0, 2) == 0) {
+    if (Math.randomRange(0, 3) == 0) {
         Q1()
-    } else if (Math.randomRange(0, 2) == 1) {
+    } else if (Math.randomRange(0, 3) == 1) {
         Q2()
-    } else {
+    } else if (Math.randomRange(0, 3) == 2) {
         Q3()
+    } else {
+        Q4()
     }
 })
